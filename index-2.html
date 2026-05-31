@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstaSave – Download Instagram Reels, Videos, Photos & Carousels Instantly</title>
+
+  <!-- Primary SEO -->
+  <meta name="description" content="InstaSave is the fastest, free Instagram downloader. Download Instagram Reels, Videos, Photos, Carousels and IGTV instantly in high quality. No watermark. No login required." />
+  <meta name="keywords" content="instagram downloader, download instagram reels, instagram video downloader, instagram photo downloader, carousel downloader, IGTV downloader, save instagram videos, reels downloader" />
+  <meta name="author" content="InstaSave" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://instasave.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://instasave.app/" />
+  <meta property="og:title" content="InstaSave – Download Instagram Content Beautifully" />
+  <meta property="og:description" content="Fast, Free and High Quality Instagram Downloader. Download Reels, Videos, Photos and Carousels with no watermark." />
+  <meta property="og:image" content="https://instasave.app/og-image.jpg" />
+  <meta property="og:site_name" content="InstaSave" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@instasave" />
+  <meta name="twitter:title" content="InstaSave – Instagram Downloader" />
+  <meta name="twitter:description" content="Download Instagram Reels, Videos, Photos & Carousels instantly. Free, fast, no watermark." />
+  <meta name="twitter:image" content="https://instasave.app/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <meta name="theme-color" content="#00ACC1" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://instasave.app/#website",
+        "url": "https://instasave.app/",
+        "name": "InstaSave",
+        "description": "Free Instagram Downloader for Reels, Videos, Photos and Carousels",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://instasave.app/?url={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://instasave.app/#organization",
+        "name": "InstaSave",
+        "url": "https://instasave.app/",
+        "logo": "https://instasave.app/logo.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "InstaSave",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Download Instagram Reels, Videos, Photos and Carousels for free.",
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "128450" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is InstaSave free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, InstaSave is completely free to use with no hidden charges." } },
+          { "@type": "Question", "name": "Can I download Instagram Reels without watermark?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all downloads via InstaSave are watermark-free and in original quality." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --cyan-50: #E0F7FA;
+      --cyan-100: #B2EBF2;
+      --cyan-200: #80DEEA;
+      --cyan-300: #4DD0E1;
+      --cyan-400: #26C6DA;
+      --cyan-500: #00ACC1;
+      --cyan-600: #00838F;
+      --cyan-700: #006064;
+      --sky-50: #E1F5FE;
+      --sky-100: #B3E5FC;
+      --sky-200: #81D4FA;
+      --sky-400: #29B6F6;
+      --sky-500: #03A9F4;
+      --sky-700: #0277BD;
+      --lavender: #E6E6FA;
+      --purple-soft: #9370DB;
+      --powder: #B0E0E6;
+      --bg: #F8FAFB;
+      --surface: #FFFFFF;
+      --surface-2: #F3F8FA;
+      --border: rgba(0,172,193,0.15);
+      --border-strong: rgba(0,172,193,0.3);
+      --text-primary: #0A1628;
+      --text-secondary: #3D5A6E;
+      --text-muted: #7A9BAD;
+      --gradient-hero: linear-gradient(135deg, #E0F7FA 0%, #E1F5FE 40%, #E6E6FA 100%);
+      --gradient-brand: linear-gradient(135deg, #00ACC1, #03A9F4, #9370DB);
+      --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(224,247,250,0.5));
+      --shadow-sm: 0 1px 3px rgba(0,106,121,0.08), 0 1px 2px rgba(0,106,121,0.06);
+      --shadow-md: 0 4px 16px rgba(0,106,121,0.1), 0 2px 6px rgba(0,106,121,0.07);
+      --shadow-lg: 0 12px 48px rgba(0,106,121,0.12), 0 4px 16px rgba(0,106,121,0.08);
+      --shadow-xl: 0 24px 80px rgba(0,106,121,0.15), 0 8px 24px rgba(0,106,121,0.1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ===== LOADER ===== */
+    #page-loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #page-loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: logoPulse 1.5s ease-in-out infinite;
+    }
+    .loader-bar-wrap {
+      width: 200px; height: 3px;
+      background: var(--cyan-100); border-radius: 99px; overflow: hidden;
+    }
+    .loader-bar {
+      height: 100%; width: 0;
+      background: var(--gradient-brand);
+      border-radius: 99px;
+      animation: loaderProgress 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes loaderProgress { to { width: 100%; } }
+    @keyframes logoPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+    /* ===== SMOOTH SCROLL LENIS EMULATION ===== */
+    html.lenis { height: auto; }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    #nav.scrolled {
+      background: rgba(248,250,251,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo img {
+      height: 36px; width: auto;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan-600); }
+    .nav-cta {
+      padding: 8px 20px; border-radius: 99px;
+      background: var(--gradient-brand);
+      color: white !important; font-weight: 600;
+      font-size: 0.875rem;
+      box-shadow: 0 4px 12px rgba(0,172,193,0.3);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,172,193,0.4) !important; }
+    .nav-mobile-btn {
+      display: none;
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 5px;
+    }
+    .nav-mobile-btn span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-primary); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 100px 24px 60px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    /* Blob shapes */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(60px); opacity: 0.5;
+      pointer-events: none; will-change: transform;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #80DEEA, transparent 70%);
+      top: -150px; right: -100px;
+      animation: blobFloat1 8s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #B0C4DE, transparent 70%);
+      bottom: -100px; left: -80px;
+      animation: blobFloat2 10s ease-in-out infinite;
+    }
+    .blob-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #D8B4FE, transparent 70%);
+      top: 30%; left: 20%;
+      animation: blobFloat3 12s ease-in-out infinite;
+    }
+    @keyframes blobFloat1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,20px) scale(1.05)} }
+    @keyframes blobFloat2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-30px) scale(1.08)} }
+    @keyframes blobFloat3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(15px,10px) scale(1.03)} 66%{transform:translate(-10px,20px) scale(0.97)} }
+
+    /* Grid lines */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(0,172,193,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,172,193,0.05) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: 0;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 800px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 28px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 99px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--border-strong);
+      backdrop-filter: blur(12px);
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--cyan-600);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan-500);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+    .hero-title .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 560px; line-height: 1.7;
+    }
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    }
+    .hero-pill {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--border);
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-secondary);
+      backdrop-filter: blur(8px);
+    }
+    .hero-pill svg { color: var(--cyan-500); }
+
+    /* ===== DOWNLOAD BOX ===== */
+    .download-box {
+      width: 100%; max-width: 680px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(24px) saturate(200%);
+      -webkit-backdrop-filter: blur(24px) saturate(200%);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-xl),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+    .dl-input-row {
+      display: flex; gap: 12px; align-items: center;
+    }
+    .dl-input-wrap {
+      flex: 1; position: relative;
+    }
+    .dl-input-icon {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      color: var(--cyan-400); pointer-events: none;
+    }
+    #url-input {
+      width: 100%;
+      padding: 14px 16px 14px 44px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: rgba(248,252,255,0.9);
+      font-family: var(--font-body); font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    #url-input:focus {
+      border-color: var(--cyan-400);
+      box-shadow: 0 0 0 3px rgba(0,172,193,0.12);
+    }
+    #url-input::placeholder { color: var(--text-muted); }
+    .dl-btn {
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      background: var(--gradient-brand);
+      color: white; font-weight: 700;
+      font-family: var(--font-display); font-size: 0.95rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,172,193,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; align-items: center; gap: 8px;
+      position: relative; overflow: hidden;
+    }
+    .dl-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,172,193,0.5); }
+    .dl-btn:hover::before { opacity: 1; }
+    .dl-btn:active { transform: translateY(0); }
+    .dl-btn-text { transition: opacity 0.2s; }
+    .dl-btn.loading .dl-btn-text { opacity: 0.7; }
+
+    /* Spinner inside button */
+    .btn-spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .dl-btn.loading .btn-spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .dl-status {
+      margin-top: 16px; min-height: 24px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; color: var(--text-muted);
+    }
+    .dl-status.error { color: #E53E3E; }
+    .dl-status.success { color: var(--cyan-600); }
+
+    /* ===== RESULTS ===== */
+    #results {
+      margin-top: 24px; display: none;
+    }
+    #results.visible { display: block; animation: fadeUp 0.5s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    .result-grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    .result-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .result-thumb {
+      width: 100%; aspect-ratio: 1;
+      object-fit: cover; background: var(--cyan-50);
+      position: relative;
+    }
+    .result-thumb-placeholder {
+      width: 100%; aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan-300);
+    }
+    .result-info {
+      padding: 14px;
+    }
+    .result-type {
+      display: inline-block; padding: 2px 10px;
+      border-radius: 99px; font-size: 0.7rem; font-weight: 600;
+      background: var(--cyan-50); color: var(--cyan-600);
+      border: 1px solid var(--border); margin-bottom: 10px;
+    }
+    .result-dl-btn {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      width: 100%; padding: 10px;
+      border-radius: var(--radius-sm);
+      background: var(--gradient-brand);
+      color: white; font-weight: 600; font-size: 0.85rem;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .result-dl-btn:hover { opacity: 0.9; transform: scale(1.02); }
+    .result-dl-btn + .result-dl-btn { margin-top: 6px; background: linear-gradient(135deg, var(--sky-500), var(--purple-soft)); }
+
+    /* Carousel nav */
+    .carousel-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .carousel-nav-btn {
+      padding: 6px 12px; border-radius: 8px;
+      background: var(--cyan-50); border: 1px solid var(--border);
+      color: var(--cyan-600); font-size: 0.8rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .carousel-nav-btn:hover { background: var(--cyan-100); }
+    .carousel-count { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+
+    /* ===== SECTION WRAPPER ===== */
+    .section { padding: 100px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cyan-600); margin-bottom: 16px;
+    }
+    .section-badge::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--cyan-400); border-radius: 2px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.025em; color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-secondary);
+      max-width: 560px; line-height: 1.7;
+    }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== FEATURES ===== */
+    #features { background: var(--surface); }
+    .features-grid {
+      margin-top: 60px;
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .feature-card {
+      padding: 28px;
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, border-color 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute;
+      inset: 0; border-radius: inherit;
+      background: linear-gradient(135deg, rgba(0,172,193,0.06), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; color: var(--cyan-500);
+      box-shadow: var(--shadow-sm);
+    }
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 8px;
+    }
+    .feature-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ===== HOW IT WORKS ===== */
+    #how-it-works { background: var(--gradient-hero); }
+    .steps-grid {
+      margin-top: 60px;
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
+    .step-card {
+      padding: 36px 28px; text-align: center;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .step-num {
+      position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gradient-brand);
+      color: white; font-family: var(--font-display);
+      font-weight: 800; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,172,193,0.4);
+    }
+    .step-icon {
+      width: 72px; height: 72px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--cyan-50), var(--sky-50));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; color: var(--cyan-500);
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--text-primary);
+    }
+    .step-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ===== STATS ===== */
+    #stats { background: var(--surface); }
+    .stats-grid {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat-card {
+      text-align: center; padding: 36px 24px;
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem; font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.875rem; color: var(--text-secondary); font-weight: 500; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: var(--surface-2); }
+    .testimonials-grid {
+      margin-top: 60px;
+      display: grid; gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    .testimonial-card {
+      padding: 28px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .testimonial-stars span { color: #F6C90E; font-size: 1rem; }
+    .testimonial-text {
+      font-size: 0.9rem; color: var(--text-secondary);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 0.9rem;
+    }
+    .testimonial-name { font-weight: 600; font-size: 0.875rem; color: var(--text-primary); }
+    .testimonial-role { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ===== YOUTUBE PROMO ===== */
+    #yt-promo {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      position: relative; overflow: hidden;
+    }
+    .yt-bg-shape {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15;
+    }
+    .yt-bg-1 { width:400px;height:400px; background:#FF0000; top:-100px; right:-100px; }
+    .yt-bg-2 { width:300px;height:300px; background:#FF6B6B; bottom:-80px; left:-80px; }
+    .yt-content {
+      position: relative; z-index: 1; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    }
+    .yt-icon {
+      width: 72px; height: 72px;
+      background: #FF0000; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(255,0,0,0.4);
+    }
+    .yt-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; color: white;
+      letter-spacing: -0.02em;
+    }
+    .yt-desc { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 500px; }
+    .yt-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px; border-radius: 99px;
+      background: #FF0000; color: white;
+      font-weight: 700; font-family: var(--font-display);
+      font-size: 1rem;
+      box-shadow: 0 4px 20px rgba(255,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .yt-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,0,0,0.6); }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--surface); }
+    .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; max-width: 780px; }
+    .faq-item {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: var(--shadow-sm); }
+    .faq-question {
+      width: 100%; padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: none; text-align: left;
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+      color: var(--text-primary); gap: 12px;
+    }
+    .faq-chevron {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border-radius: 50%; background: var(--cyan-50);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan-500); transition: transform 0.3s, background 0.2s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--cyan-100); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    }
+    .faq-answer-inner { padding: 0 24px 20px; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text-primary);
+      color: rgba(255,255,255,0.6);
+      padding: 64px 24px 32px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid; gap: 48px;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+    .footer-brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc { font-size: 0.85rem; line-height: 1.6; max-width: 260px; }
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.9); margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 0.875rem; transition: color 0.2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 32px; font-size: 0.8rem;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom a { transition: color 0.2s; }
+    .footer-bottom a:hover { color: white; }
+
+    /* ===== FLOATING CURSOR GLOW (Desktop) ===== */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed; z-index: 9998;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,172,193,0.08) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+
+    /* ===== SCROLL PROGRESS ===== */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 9997;
+      background: var(--gradient-brand);
+      transform-origin: left; transform: scaleX(0);
+      transition: transform 0.1s linear;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gradient-brand);
+      color: white; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,172,193,0.4);
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    #back-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    #back-top:hover { transform: translateY(-2px); }
+
+    /* ===== UTILITY ===== */
+    .text-center { text-align: center; }
+    .mt-16 { margin-top: 16px; }
+    .mt-32 { margin-top: 32px; }
+    .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media (max-width: 680px) {
+      .dl-input-row { flex-direction: column; }
+      .dl-btn { width: 100%; justify-content: center; }
+      .section { padding: 64px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="page-loader" role="status" aria-label="Loading InstaSave">
+    <div class="loader-logo">InstaSave</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Cursor glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
+
+  <!-- Back to top -->
+  <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===== NAV ===== -->
+  <header role="banner">
+    <nav id="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="InstaSave Home">
+          <img src="/logo.png" alt="InstaSave Logo" width="36" height="36" onerror="this.style.display='none'" loading="eager" />
+          <span class="nav-logo-text">InstaSave</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#faq" class="nav-cta">Download Free</a></li>
+        </ul>
+        <button class="nav-mobile-btn" aria-label="Toggle navigation" aria-expanded="false" id="nav-mobile-btn">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main id="main">
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="blob blob-1" aria-hidden="true"></div>
+      <div class="blob blob-2" aria-hidden="true"></div>
+      <div class="blob blob-3" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge" aria-label="Live service">
+          <span class="hero-badge-dot"></span>
+          Free · No Watermark · No Login Required
+        </div>
+
+        <h1 id="hero-heading" class="hero-title">
+          Download Instagram<br /><span class="gradient-text">Content Beautifully.</span>
+        </h1>
+
+        <p class="hero-sub">Fast, Free and High Quality Instagram Downloader. Save Reels, Videos, Photos and Carousels in seconds.</p>
+
+        <div class="hero-pills" role="list" aria-label="Features">
+          <span class="hero-pill" role="listitem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            No Watermark
+          </span>
+          <span class="hero-pill" role="listitem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Instant Download
+          </span>
+          <span class="hero-pill" role="listitem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Mobile Friendly
+          </span>
+          <span class="hero-pill" role="listitem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Unlimited Usage
+          </span>
+          <span class="hero-pill" role="listitem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Fast Processing
+          </span>
+        </div>
+
+        <!-- Download Box -->
+        <div class="download-box" role="search" aria-label="Instagram URL downloader">
+          <div class="dl-input-row">
+            <div class="dl-input-wrap">
+              <span class="dl-input-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </span>
+              <input
+                type="url" id="url-input"
+                placeholder="Paste Instagram URL here…"
+                aria-label="Instagram post, reel or video URL"
+                autocomplete="off" spellcheck="false"
+              />
+            </div>
+            <button class="dl-btn" id="dl-btn" aria-label="Download Instagram content">
+              <div class="btn-spinner" aria-hidden="true"></div>
+              <span class="dl-btn-text">Download</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </button>
+          </div>
+          <div id="dl-status" class="dl-status" role="status" aria-live="polite"></div>
+          <div id="results"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" class="section" aria-labelledby="features-heading">
+      <div class="section-inner">
+        <div class="reveal">
+          <div class="section-badge">Everything You Need</div>
+          <h2 id="features-heading" class="section-title">Powerful Download<br /><span class="gradient-text">Features</span></h2>
+          <p class="section-sub">InstaSave supports every type of Instagram content — download anything in original quality, instantly.</p>
+        </div>
+        <div class="features-grid" role="list" aria-label="Feature list">
+          <!-- Feature cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="section" aria-labelledby="hiw-heading">
+      <div class="section-inner text-center">
+        <div class="reveal">
+          <div class="section-badge">Simple as 1-2-3</div>
+          <h2 id="hiw-heading" class="section-title">How InstaSave<br /><span class="gradient-text">Works</span></h2>
+          <p class="section-sub" style="margin:0 auto">Three effortless steps to save any Instagram content to your device.</p>
+        </div>
+        <div class="steps-grid mt-32" role="list">
+          <div class="step-card reveal" role="listitem">
+            <div class="step-num" aria-hidden="true">1</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <h3 class="step-title">Paste the URL</h3>
+            <p class="step-desc">Copy the link from any Instagram post, Reel, video, IGTV or carousel and paste it in the input box above.</p>
+          </div>
+          <div class="step-card reveal" role="listitem" style="transition-delay:0.1s">
+            <div class="step-num" aria-hidden="true">2</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="step-title">Fetch Content</h3>
+            <p class="step-desc">Click Download and our API instantly fetches all available media files from the URL with full quality.</p>
+          </div>
+          <div class="step-card reveal" role="listitem" style="transition-delay:0.2s">
+            <div class="step-num" aria-hidden="true">3</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <h3 class="step-title">Download Media</h3>
+            <p class="step-desc">Preview and save any file directly to your device. No account, no watermark, no limits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section id="stats" class="section" aria-labelledby="stats-heading">
+      <div class="section-inner">
+        <div class="reveal text-center" style="margin-bottom:60px">
+          <div class="section-badge">Trusted by Millions</div>
+          <h2 id="stats-heading" class="section-title">Numbers That<br /><span class="gradient-text">Speak</span></h2>
+        </div>
+        <div class="stats-grid" role="list">
+          <div class="stat-card reveal" role="listitem">
+            <div class="stat-num" data-count="50000000">0</div>
+            <div class="stat-label">Downloads Completed</div>
+          </div>
+          <div class="stat-card reveal" role="listitem" style="transition-delay:0.1s">
+            <div class="stat-num" data-count="5000000">0</div>
+            <div class="stat-label">Active Users</div>
+          </div>
+          <div class="stat-card reveal" role="listitem" style="transition-delay:0.2s">
+            <div class="stat-num" data-count="99" data-suffix="%">0</div>
+            <div class="stat-label">Uptime Reliability</div>
+          </div>
+          <div class="stat-card reveal" role="listitem" style="transition-delay:0.3s">
+            <div class="stat-num" data-count="4" data-suffix="s">0</div>
+            <div class="stat-label">Average Download Speed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="section" aria-labelledby="testimonials-heading">
+      <div class="section-inner">
+        <div class="reveal text-center" style="margin-bottom:0">
+          <div class="section-badge">What Users Say</div>
+          <h2 id="testimonials-heading" class="section-title">Loved by<br /><span class="gradient-text">Content Creators</span></h2>
+        </div>
+        <div class="testimonials-grid" role="list" id="testimonials-list"></div>
+      </div>
+    </section>
+
+    <!-- ===== YOUTUBE PROMO ===== -->
+    <section id="yt-promo" class="section" aria-labelledby="yt-heading">
+      <div class="yt-bg-shape yt-bg-1" aria-hidden="true"></div>
+      <div class="yt-bg-shape yt-bg-2" aria-hidden="true"></div>
+      <div class="section-inner">
+        <div class="yt-content reveal">
+          <div class="yt-icon" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <h2 id="yt-heading" class="yt-title">Need YouTube<br />Downloads Too?</h2>
+          <p class="yt-desc">Download YouTube videos, Shorts, playlists and audio using our dedicated YouTube downloader — fast and free.</p>
+          <a href="#" class="yt-btn" aria-label="Visit YouTube Downloader">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Visit YouTube Downloader
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <div class="section-inner">
+        <div class="reveal">
+          <div class="section-badge">Got Questions?</div>
+          <h2 id="faq-heading" class="section-title">Frequently Asked<br /><span class="gradient-text">Questions</span></h2>
+        </div>
+        <div class="faq-list" id="faq-list" role="list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">InstaSave</div>
+          <p class="footer-brand-desc">The fastest, most reliable way to download Instagram Reels, Videos, Photos and Carousels. Free, no login, no watermark.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <ul role="list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Downloaders</div>
+          <ul role="list">
+            <li><a href="#hero">Reel Downloader</a></li>
+            <li><a href="#hero">Video Downloader</a></li>
+            <li><a href="#hero">Photo Downloader</a></li>
+            <li><a href="#hero">Carousel Downloader</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <ul role="list">
+            <li><a href="#faq">Privacy Policy</a></li>
+            <li><a href="#faq">Terms of Service</a></li>
+            <li><a href="#faq">Contact</a></li>
+            <li><a href="#yt-promo">YouTube Downloader</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 InstaSave. All rights reserved.</span>
+        <span>Made with ♥ for content creators worldwide</span>
+        <a href="#faq">Privacy</a>
+        <a href="#faq">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // ===== CONSTANTS =====
+  const API_BASE = 'https://social-down-api.crezybotz.workers.dev/?key=iamry27&url=';
+
+  // ===== LOADER =====
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('page-loader').classList.add('hidden');
+    }, 1800);
+  });
+
+  // ===== NAV SCROLL =====
+  const nav = document.getElementById('nav');
+  const backTop = document.getElementById('back-top');
+  const scrollProgress = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const st = window.scrollY;
+    nav.classList.toggle('scrolled', st > 50);
+    backTop.classList.toggle('visible', st > 400);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.transform = `scaleX(${Math.min(st / docH, 1)})`;
+  }, { passive: true });
+
+  // ===== CURSOR GLOW =====
+  const cursorGlow = document.getElementById('cursor-glow');
+  let cx = 0, cy = 0, tx = 0, ty = 0;
+  document.addEventListener('mousemove', (e) => {
+    tx = e.clientX; ty = e.clientY;
+    cursorGlow.style.opacity = '1';
+  });
+  document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
+  function animateCursor() {
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    cursorGlow.style.left = cx + 'px';
+    cursorGlow.style.top = cy + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // ===== REVEAL ON SCROLL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  function initReveal() { document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); }
+
+  // ===== STATS COUNTER =====
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 2000;
+    const start = performance.now();
+    function update(ts) {
+      const progress = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.floor(eased * target);
+      if (target >= 1000000) {
+        el.textContent = (value / 1000000).toFixed(1) + 'M' + suffix;
+      } else if (target >= 1000) {
+        el.textContent = Math.floor(value / 1000) + 'K' + suffix;
+      } else {
+        el.textContent = value + suffix;
+      }
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        statObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // ===== FEATURES DATA =====
+  const features = [
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`, title: 'Reel Downloader', desc: 'Download Instagram Reels in full HD quality. No watermark, no compression, original sound.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>`, title: 'Video Downloader', desc: 'Save any Instagram video in the highest available resolution. Supports all video formats.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`, title: 'Photo Downloader', desc: 'Download Instagram photos in full resolution. Multiple sizes available when offered by Instagram.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`, title: 'Carousel Downloader', desc: 'Download all photos and videos from a carousel post at once. Get every slide with one click.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`, title: 'Mobile Optimized', desc: 'Perfectly designed for iPhone and Android. Download directly to your gallery from your browser.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, title: 'Fast API Response', desc: 'Our infrastructure processes requests in under 2 seconds, giving you files in moments.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, title: 'Secure Processing', desc: 'We never store your downloads or personal data. Your privacy is protected at every step.' },
+    { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`, title: 'Unlimited Downloads', desc: 'No daily limits, no subscriptions. Download as many posts, reels, and photos as you need.' },
+  ];
+
+  function renderFeatures() {
+    const grid = document.querySelector('.features-grid');
+    grid.innerHTML = features.map((f, i) => `
+      <article class="feature-card reveal" role="listitem" style="transition-delay:${i * 0.07}s">
+        <div class="feature-icon" aria-hidden="true">${f.icon}</div>
+        <h3 class="feature-title">${f.title}</h3>
+        <p class="feature-desc">${f.desc}</p>
+      </article>
+    `).join('');
+  }
+
+  // ===== TESTIMONIALS DATA =====
+  const testimonials = [
+    { name: 'Sarah K.', role: 'Content Creator · 280K followers', text: 'InstaSave is hands-down the cleanest Instagram downloader I have ever used. The quality is perfect and there\'s zero watermark. My go-to tool every single day.', initials: 'SK' },
+    { name: 'Marcus R.', role: 'Social Media Manager', text: 'We use InstaSave to archive client content across multiple accounts. The carousel support is a game-changer — it pulls every single slide automatically.', initials: 'MR' },
+    { name: 'Aisha P.', role: 'Digital Marketer', text: 'Finally a downloader that doesn\'t feel sketchy! Beautiful interface, incredibly fast, and works perfectly on mobile. I recommended it to my whole team.', initials: 'AP' },
+    { name: 'Tom V.', role: 'Videographer', text: 'The video quality InstaSave preserves is outstanding. No re-compression artifacts. It downloads exactly what Instagram serves — pure quality.', initials: 'TV' },
+    { name: 'Leila N.', role: 'Influencer · 140K followers', text: 'I use it to save my own Reels when my phone storage fails. InstaSave is the most reliable tool I have tried — it just works every time.', initials: 'LN' },
+    { name: 'James C.', role: 'Brand Photographer', text: 'The interface is so polished it feels like a proper SaaS app, not a random downloader site. Highly impressed by the design and performance.', initials: 'JC' },
+  ];
+
+  function renderTestimonials() {
+    const list = document.getElementById('testimonials-list');
+    list.innerHTML = testimonials.map((t, i) => `
+      <article class="testimonial-card reveal" role="listitem" style="transition-delay:${i * 0.1}s">
+        <div class="testimonial-stars" aria-label="5 stars">
+          ${'<span aria-hidden="true">★</span>'.repeat(5)}
+        </div>
+        <p class="testimonial-text">"${t.text}"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">${t.initials}</div>
+          <div>
+            <div class="testimonial-name">${t.name}</div>
+            <div class="testimonial-role">${t.role}</div>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // ===== FAQ DATA =====
+  const faqs = [
+    { q: 'Is InstaSave completely free to use?', a: 'Yes, InstaSave is 100% free. There are no hidden charges, no subscription plans, and no premium tiers required to download Instagram content.' },
+    { q: 'Can I download Instagram Reels without a watermark?', a: 'Absolutely. All media downloaded via InstaSave is watermark-free and in the original quality that Instagram serves, with no modifications whatsoever.' },
+    { q: 'Do I need to create an account or log in?', a: 'No account is required. Simply paste the Instagram URL and click Download. InstaSave works entirely without requiring your Instagram credentials.' },
+    { q: 'What types of Instagram content can I download?', a: 'InstaSave supports Reels, Videos, Photos, Carousel posts (all slides), and IGTV content. As long as you have the URL, we can fetch it.' },
+    { q: 'Does InstaSave work on mobile devices?', a: 'Yes, InstaSave is fully mobile-optimized and works seamlessly on iPhone, Android, and tablets. The design is mobile-first and the downloads integrate with your device\'s gallery.' },
+    { q: 'Is it safe to use InstaSave?', a: 'Completely safe. We do not store any content you download, do not collect personal information, and do not require access to your Instagram account.' },
+    { q: 'Why is my Instagram URL not working?', a: 'Ensure the URL is from a public Instagram profile or post. Private account content cannot be fetched. Also make sure you are copying the full URL including "https://".' },
+    { q: 'Can I download from private Instagram accounts?', a: 'No. InstaSave can only fetch content from public Instagram profiles. Attempting to download from private accounts will return an error.' },
+    { q: 'How many files can I download per day?', a: 'There is no daily limit on InstaSave. You can download as many posts, Reels, and photos as you need, completely unlimited.' },
+    { q: 'What video quality does InstaSave download?', a: 'InstaSave always fetches the highest quality available for any given post — typically 1080p for Reels and videos, and full resolution for photos.' },
+    { q: 'Can I download entire carousel albums?', a: 'Yes. If a post contains multiple photos or videos (a carousel), InstaSave will detect all files and present separate download buttons for each one.' },
+    { q: 'Does InstaSave support IGTV downloads?', a: 'Yes, IGTV content is fully supported. Paste the IGTV video URL and InstaSave will fetch and allow you to download it in the best quality available.' },
+  ];
+
+  function renderFAQ() {
+    const list = document.getElementById('faq-list');
+    list.innerHTML = faqs.map((f, i) => `
+      <div class="faq-item reveal" role="listitem" style="transition-delay:${i * 0.05}s">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-${i}">
+          <span>${f.q}</span>
+          <span class="faq-chevron" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer" id="faq-answer-${i}" role="region">
+          <div class="faq-answer-inner">${f.a}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // FAQ accordion
+    list.addEventListener('click', (e) => {
+      const btn = e.target.closest('.faq-question');
+      if (!btn) return;
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  // ===== VALIDATE INSTAGRAM URL =====
+  function isInstagramURL(url) {
+    return /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv|stories|reels)\/[A-Za-z0-9_\-]+/.test(url.trim());
+  }
+
+  // ===== DOWNLOAD API =====
+  async function fetchMedia(url) {
+    const endpoint = API_BASE + encodeURIComponent(url);
+    const resp = await fetch(endpoint);
+    if (!resp.ok) throw new Error(`API error: ${resp.status}`);
+    const data = await resp.json();
+    return data;
+  }
+
+  // ===== RENDER RESULTS =====
+  function renderResults(data, resultsEl) {
+    // Normalize media items from various API response shapes
+    let items = [];
+
+    if (Array.isArray(data)) {
+      items = data;
+    } else if (data.data) {
+      if (Array.isArray(data.data)) items = data.data;
+      else if (data.data.medias) items = data.data.medias;
+      else if (data.data.url) items = [data.data];
+    } else if (data.medias) {
+      items = data.medias;
+    } else if (data.result) {
+      if (Array.isArray(data.result)) items = data.result;
+      else if (data.result.url) items = [data.result];
+    } else if (data.url) {
+      items = [data];
+    }
+
+    if (!items.length) {
+      return '<p style="color:var(--text-muted);font-size:0.875rem;text-align:center;padding:12px 0">No downloadable media found for this URL.</p>';
+    }
+
+    // If more than 1 item, show count
+    const isCarousel = items.length > 1;
+
+    const cards = items.map((item, idx) => {
+      const thumbUrl = item.thumbnail || item.thumb || item.cover || item.image || '';
+      const videoUrl = item.url || item.download_url || item.media_url || item.hd || item.sd || '';
+      const type = item.type || (videoUrl.includes('.mp4') ? 'video' : 'photo');
+      const typeLabel = type === 'video' ? 'Video' : type === 'image' ? 'Photo' : type === 'reel' ? 'Reel' : 'Media';
+
+      const thumbHtml = thumbUrl
+        ? `<img src="${thumbUrl}" alt="Media thumbnail ${idx+1}" class="result-thumb" loading="lazy" width="240" height="240" />`
+        : `<div class="result-thumb-placeholder" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+           </div>`;
+
+      // Collect all possible quality links
+      const links = [];
+      if (item.hd || item.url_hd) links.push({ label: 'Download HD', url: item.hd || item.url_hd });
+      if (item.sd || item.url_sd) links.push({ label: 'Download SD', url: item.sd || item.url_sd });
+      if (!links.length && videoUrl) links.push({ label: `Download ${typeLabel}`, url: videoUrl });
+
+      const btnHtml = links.map((l, li) => `
+        <a href="${l.url}" download target="_blank" rel="noopener noreferrer" class="result-dl-btn" aria-label="${l.label} for media ${idx+1}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          ${l.label}
+        </a>
+      `).join('');
+
+      return `
+        <article class="result-card" aria-label="Media ${idx+1} of ${items.length}">
+          ${thumbHtml}
+          <div class="result-info">
+            <span class="result-type">${isCarousel ? `Carousel ${idx+1}/${items.length}` : typeLabel}</span>
+            ${btnHtml}
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    return `<div class="result-grid">${cards}</div>`;
+  }
+
+  // ===== DOWNLOAD HANDLER =====
+  async function handleDownload() {
+    const input = document.getElementById('url-input');
+    const btn = document.getElementById('dl-btn');
+    const status = document.getElementById('dl-status');
+    const results = document.getElementById('results');
+    const url = input.value.trim();
+
+    // Reset
+    status.className = 'dl-status';
+    status.innerHTML = '';
+    results.innerHTML = '';
+    results.classList.remove('visible');
+
+    if (!url) {
+      status.className = 'dl-status error';
+      status.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Please paste an Instagram URL to continue.`;
+      input.focus();
+      return;
+    }
+
+    if (!isInstagramURL(url)) {
+      status.className = 'dl-status error';
+      status.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Please enter a valid Instagram URL (post, reel, or IGTV).`;
+      return;
+    }
+
+    btn.classList.add('loading');
+    btn.disabled = true;
+    status.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-500)" stroke-width="2" style="animation:spin 1s linear infinite"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg> Fetching media, please wait…`;
+
+    try {
+      const data = await fetchMedia(url);
+      const html = renderResults(data, results);
+      results.innerHTML = html;
+      results.classList.add('visible');
+      status.innerHTML = '';
+      status.className = 'dl-status success';
+      status.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Media fetched successfully. Choose a quality to download.`;
+    } catch (err) {
+      status.className = 'dl-status error';
+      status.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Could not fetch media. The content may be private or the URL may be invalid.`;
+    } finally {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  }
+
+  document.getElementById('dl-btn').addEventListener('click', handleDownload);
+  document.getElementById('url-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleDownload();
+  });
+
+  // ===== GSAP ANIMATIONS (after load) =====
+  function initGSAP() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance stagger
+    gsap.from('.hero-badge', { opacity: 0, y: 20, duration: 0.7, delay: 1.9, ease: 'power3.out' });
+    gsap.from('.hero-title', { opacity: 0, y: 30, duration: 0.9, delay: 2.05, ease: 'power3.out' });
+    gsap.from('.hero-sub', { opacity: 0, y: 20, duration: 0.7, delay: 2.2, ease: 'power3.out' });
+    gsap.from('.hero-pills', { opacity: 0, y: 16, duration: 0.6, delay: 2.35, ease: 'power3.out' });
+    gsap.from('.download-box', { opacity: 0, y: 24, scale: 0.97, duration: 0.8, delay: 2.5, ease: 'power3.out' });
+
+    // Blobs parallax
+    gsap.to('.blob-1', { y: -60, ease: 'none', scrollTrigger: { scrub: 1.5 } });
+    gsap.to('.blob-2', { y: 80, ease: 'none', scrollTrigger: { scrub: 2 } });
+    gsap.to('.blob-3', { y: -40, x: 20, ease: 'none', scrollTrigger: { scrub: 1 } });
+
+    // Step cards stagger scroll
+    gsap.from('.step-card', {
+      opacity: 0, y: 40, scale: 0.95,
+      stagger: 0.15, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '#how-it-works', start: 'top 70%' }
+    });
+  }
+
+  // ===== INIT =====
+  document.addEventListener('DOMContentLoaded', () => {
+    renderFeatures();
+    renderTestimonials();
+    renderFAQ();
+    initReveal();
+
+    // Observe stat counters
+    document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
+
+    // GSAP init after loader
+    setTimeout(initGSAP, 1900);
+  });
+  </script>
+</body>
+</html>
